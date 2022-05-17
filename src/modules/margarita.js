@@ -3,7 +3,6 @@ const urlAPI = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margari
 const margarita = async () => {
   let response = await fetch(urlAPI);
   response = await response.json();
-  console.log(response);
   return response;
 };
 

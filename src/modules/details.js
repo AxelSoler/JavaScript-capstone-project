@@ -3,6 +3,4 @@ const displayDetails = async (id) => {
   return cocktail;
 };
 
-module.exports = {
-  displayDetails,
-};
+export default displayDetails;

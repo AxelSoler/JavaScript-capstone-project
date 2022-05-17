@@ -8,11 +8,12 @@ body {
   bottom: 0;
   margin: 0;
   width: 100%;
-  height: 15%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 4px solid black;
+  border-top: 4px solid rgb(0, 0, 0, 0.7);
+  background-color: rgba(219, 219, 219, 0.5);
 }
 
 #license {
@@ -46,4 +47,47 @@ body {
 a {
   text-decoration: none;
   color: black;
+}
+
+#listItems {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 48px 0 128px 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+}
+
+.likeImg {
+  width: 24px;
+}
+
+.likes {
+  padding: 48px 0 0 12px;
+}
+
+.commentBtn {
+  border: 4px solid black;
+  font-size: 18px;
+  padding: 8px 16px;
+}
+
+.reservationBtn {
+  margin-top: 24px;
+  border: 4px solid black;
+  font-size: 18px;
+  padding: 8px 16px;
+}
+
+.margaritaImg {
+  width: 50%;
 }

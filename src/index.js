@@ -6,4 +6,6 @@ const logo = document.querySelector('#logoImg');
 
 logo.src = logoImg;
 
-displayItems();
+window.onload = () => {
+  displayItems();
+};

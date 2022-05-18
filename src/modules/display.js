@@ -1,6 +1,5 @@
-import getData from './data.js';
 import like from '../img/like.svg';
-import sendlike from './sendData.js';
+import { sendlike, getData } from './data';
 
 const itemSection = document.querySelector('#listItems');
 

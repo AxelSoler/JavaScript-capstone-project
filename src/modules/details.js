@@ -61,11 +61,20 @@ const popup = () => {
   }
 
   const newCommentDiv = document.createElement('div');
+  newCommentDiv.className = 'newCommentDiv';
+  const newCommentTitle = document.createElement('h2');
+  newCommentTitle.innerHTML = 'Add a comment';
+  newCommentTitle.className = 'add-comment-title';
 
+  const input = document.createElement('input');
+  input.className = 'input-comment';
+  const textArea = document.createElement('textarea');
+
+  newCommentDiv.append(newCommentTitle, input, textArea);
   commentDiv.append(commentTitle, ul);
   infoDiv.append(info1, info2, info3, info4);
   imageDiv.append(image);
-  card.append(icon, imageDiv, title, infoDiv, commentDiv);
+  card.append(icon, imageDiv, title, infoDiv, commentDiv, newCommentDiv);
   document.body.appendChild(card);
 };
 

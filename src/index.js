@@ -1,7 +1,7 @@
 import './style.css';
 import logoImg from './img/logo.png';
 import displayItems from './modules/display.js';
-import { popup } from './modules/details';
+import { closePopup, popup } from './modules/details';
 
 const logo = document.querySelector('#logoImg');
 logo.src = logoImg;
@@ -14,6 +14,7 @@ logo.src = logoImg;
 //   });
 // });
 popup();
+closePopup();
 
 window.onload = () => {
   displayItems();

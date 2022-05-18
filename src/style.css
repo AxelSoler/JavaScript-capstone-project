@@ -91,3 +91,44 @@ a {
 .margaritaImg {
   width: 50%;
 }
+
+/* popup styles */
+.card {
+  background-color: white;
+   z-index: 10;
+   border-radius: 5px;
+   border: 1px solid rgb(180, 178, 178);
+   width: 70vw;
+   min-height: 70vh;
+   position: absolute; 
+   top: 100px;
+   left: 0; 
+   right: 0; 
+   margin-left: auto; 
+   margin-right: auto; 
+   
+}
+
+.detail-image {
+  width: 600px;
+  align-self: center;
+}
+
+.icon {
+  float: right;
+  padding: 10px;
+  zoom: 2;
+}
+
+.imageDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clear: right;
+}
+
+.text-title {
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
+}

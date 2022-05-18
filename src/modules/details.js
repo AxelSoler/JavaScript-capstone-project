@@ -5,6 +5,14 @@ const fetchCocktailById = async (id) => {
   return cocktail;
 };
 
+const closePopup = () => {
+  const closeButton = document.querySelector('.icon');
+  closeButton.addEventListener('click', () => {
+    const card = document.querySelector('.card');
+    card.style.display = 'none';
+  });
+};
+
 const popup = () => {
   const card = document.createElement('div');
   card.className = 'card';
@@ -31,4 +39,5 @@ const popup = () => {
 export {
   fetchCocktailById,
   popup,
+  closePopup,
 };

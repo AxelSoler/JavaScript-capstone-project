@@ -132,3 +132,26 @@ a {
   width: 100%;
   font-size: 2rem;
 }
+
+.detail-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+
+.detail-info {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.comment-div {
+  text-align: center;
+}
+
+.comment-title {
+  font-size: 2rem;
+}
+
+.comment-list {
+  font-size: 1.5rem;
+}

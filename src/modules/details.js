@@ -6,6 +6,12 @@ const fetchCocktailById = async (id) => {
   return result.drinks[0];
 };
 
+const fetchComments = async (id) => {
+  const comments = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/${id}/comments`);
+  const result = await comments.json();
+  console.log(result);
+};
+
 const popup = (details) => {
   const {
     strDrinkThumb, strDrink, strInstructions,
@@ -84,9 +90,14 @@ const popup = (details) => {
   message.rows = 10;
   message.placeholder = 'Your insights....';
 
-  const button = document.createElement('form');
+  const button = document.createElement('button');
   button.textContent = 'COMMENT';
   button.className = 'submit-button';
+
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('hello world');
+  });
 
   commentDiv.append(commentTitle, ul);
   infoDiv.append(info1, info2, info3, info4);
@@ -100,4 +111,5 @@ const popup = (details) => {
 export {
   fetchCocktailById,
   popup,
+  fetchComments,
 };

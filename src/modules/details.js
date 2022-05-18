@@ -31,8 +31,41 @@ const popup = () => {
   title.innerHTML = 'Margarita';
   title.className = 'text-title';
 
+  const infoDiv = document.createElement('div');
+  infoDiv.className = 'detail-info';
+
+  const info1 = document.createElement('p');
+  info1.innerHTML = 'Ingredient: apple';
+
+  const info2 = document.createElement('p');
+  info2.innerHTML = 'Ingredient: apple';
+
+  const info3 = document.createElement('p');
+  info3.innerHTML = 'Ingredient: apple';
+
+  const info4 = document.createElement('p');
+  info4.innerHTML = 'Ingredient: apple';
+
+  const commentDiv = document.createElement('div');
+  commentDiv.className = 'comment-div';
+  const commentTitle = document.createElement('h2');
+  commentTitle.innerHTML = 'Comment (2)';
+  commentTitle.className = 'comment-title';
+
+  const ul = document.createElement('ul');
+  ul.className = 'comment-list';
+  for (let i = 0; i < 3; i += 1) {
+    const li = document.createElement('li');
+    li.innerHTML = 'this is a comment displayed with for loop';
+    ul.append(li);
+  }
+
+  const newCommentDiv = document.createElement('div');
+
+  commentDiv.append(commentTitle, ul);
+  infoDiv.append(info1, info2, info3, info4);
   imageDiv.append(image);
-  card.append(icon, imageDiv, title);
+  card.append(icon, imageDiv, title, infoDiv, commentDiv);
   document.body.appendChild(card);
 };
 

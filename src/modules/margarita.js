@@ -1,7 +1,5 @@
-const urlAPI = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
-
-const margarita = async () => {
-  let response = await fetch(urlAPI);
+const margarita = async (url) => {
+  let response = await fetch(url);
   response = await response.json();
   return response;
 };

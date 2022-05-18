@@ -3,8 +3,8 @@ import like from '../img/like.svg';
 
 const itemSection = document.querySelector('#listItems');
 
-const displayItems = async () => {
-  const allItems = await margarita();
+const displayItems = async (url) => {
+  const allItems = await margarita(url);
   const allMargaritas = allItems.drinks;
   allMargaritas.forEach((element) => {
     itemSection.innerHTML += `<div class="item">

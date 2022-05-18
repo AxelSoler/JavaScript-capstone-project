@@ -91,3 +91,106 @@ a {
 .margaritaImg {
   width: 50%;
 }
+
+/* popup styles */
+.card {
+  background-color: white;
+  z-index: 10;
+  border-radius: 5px;
+  border: 1px solid rgb(180, 178, 178);
+  width: 50vw;
+  min-height: 70vh;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail-image {
+  width: 400px;
+  align-self: center;
+}
+
+.icon {
+  float: right;
+  padding: 10px;
+  zoom: 2;
+}
+
+.imageDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clear: right;
+}
+
+.text-title {
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.detail-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  text-align: justify;
+  padding-left: 50px;
+  font-size: 1.5rem;
+}
+
+.comment-div {
+  text-align: center;
+}
+
+.comment-title {
+  font-size: 2rem;
+}
+
+.comment-list {
+  font-size: 1.5rem;
+  list-style-type: none;
+}
+
+.new-comment-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textarea-input {
+  width: 500px;
+  border: 2px solid black;
+}
+
+.add-comment-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.input-comment {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 20vw;
+  border: 2px solid black;
+}
+
+.submit-button {
+  border: 2px solid black;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+}
+
+.instructions-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.instructions {
+  padding: 0 30px;
+  font-size: 1.5rem;
+}

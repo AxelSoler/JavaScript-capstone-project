@@ -16,6 +16,11 @@ const sendlike = async (url2, img)=>{
           'Content-type': 'application/json; charset=UTF-8',
         },
       })
+      const likesP = document.querySelectorAll('.likesNum');
+      const allLikes = await getData(url2);
+      likesP.forEach((element, index) => {
+        element.innerText = `${allLikes[index].likes} likes`;
+      });
     })
   })
 };

@@ -1,10 +1,10 @@
-import margarita from './margarita.js';
+import getData from './data.js';
 import like from '../img/like.svg';
 
 const itemSection = document.querySelector('#listItems');
 
-const displayItems = async (url) => {
-  const allItems = await margarita(url);
+const displayItems = async (url, url2) => {
+  const allItems = await getData(url);
   const allMargaritas = allItems.drinks;
   allMargaritas.forEach((element) => {
     itemSection.innerHTML += `<div class="item">
@@ -13,13 +13,18 @@ const displayItems = async (url) => {
       <h2>${element.strDrink}</h2>
       <div class="likes">
         <img class="likeImg" src="${like}" alt="like">
-        <p>likes</p>
+        <p class="likesNum"> </p>
       </div>
       </div>
       <button class="commentBtn">Comments</button>
       <button class="reservationBtn">Reservations</button>
   </div>`;
   });
+  const likesP = document.querySelectorAll('.likesNum');
+  const allLikes = await getData(url2);
+  likesP.forEach((element,index) => {
+    element.innerText = `${allLikes[index].likes} likes`;
+  }) 
 };
 
 export default displayItems;

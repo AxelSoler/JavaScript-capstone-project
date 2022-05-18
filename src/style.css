@@ -154,4 +154,21 @@ a {
 
 .comment-list {
   font-size: 1.5rem;
+  list-style-type: none;
+}
+
+.newCommentDiv {
+  width: 100%;
+  min-height: 3rem;
+}
+
+.add-comment-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.input-comment {
+  margin: 20px;
+  padding: 5px;
+  width: 20vw;
 }

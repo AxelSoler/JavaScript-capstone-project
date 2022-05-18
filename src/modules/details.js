@@ -5,10 +5,12 @@ const fetchCocktailById = async (id) => {
     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
   );
   const result = await cocktail.json();
-  return result;
+  return result.drinks[0];
 };
 
-const popup = () => {
+const popup = (details) => {
+  console.log(details);
+  const { strDrinkThumb, strDrink } = details;
   const card = document.createElement('div');
   card.className = 'card';
 
@@ -16,14 +18,14 @@ const popup = () => {
   imageDiv.className = 'imageDiv';
 
   const image = document.createElement('img');
-  image.src = tempImage;
+  image.src = strDrinkThumb;
   image.className = 'detail-image';
 
   const icon = document.createElement('i');
   icon.className = 'fa fa-times icon';
 
   const title = document.createElement('h2');
-  title.innerHTML = 'Margarita';
+  title.innerHTML = strDrink;
   title.className = 'text-title';
 
   const infoDiv = document.createElement('div');

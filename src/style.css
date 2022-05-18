@@ -4,8 +4,6 @@ body {
 }
 
 #footer {
-  position: fixed;
-  bottom: 0;
   margin: 0;
   width: 100%;
   height: 10%;
@@ -52,7 +50,7 @@ a {
 #listItems {
   display: grid;
   grid-template-columns: auto auto auto;
-  margin: 48px 0 128px 0;
+  margin: 48px 0 64px 0;
 }
 
 .item {
@@ -73,6 +71,9 @@ a {
 
 .likes {
   padding: 48px 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .commentBtn {

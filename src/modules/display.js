@@ -13,7 +13,7 @@ const displayItems = async (url, url2) => {
       <h2>${element.strDrink}</h2>
       <div class="likes">
         <img class="likeImg" src="${like}" alt="like">
-        <p class="likesNum"> </p>
+        <p class="likesNum"></p>
       </div>
       </div>
       <button class="commentBtn">Comments</button>
@@ -22,9 +22,9 @@ const displayItems = async (url, url2) => {
   });
   const likesP = document.querySelectorAll('.likesNum');
   const allLikes = await getData(url2);
-  likesP.forEach((element,index) => {
+  likesP.forEach((element, index) => {
     element.innerText = `${allLikes[index].likes} likes`;
-  }) 
+  });
 };
 
 export default displayItems;

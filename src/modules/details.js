@@ -1,8 +1,11 @@
 import tempImage from '../img/temp.jpg';
 
 const fetchCocktailById = async (id) => {
-  const cocktail = await fetch(`www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-  return cocktail;
+  const cocktail = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
+  );
+  const result = await cocktail.json();
+  return result;
 };
 
 const popup = () => {

@@ -7,7 +7,6 @@ const fetchCocktailById = async (id) => {
 };
 
 const popup = (details) => {
-  console.log(details);
   const {
     strDrinkThumb, strDrink, strInstructions,
     strIngredient1, strIngredient2, strIngredient3, strIngredient4,

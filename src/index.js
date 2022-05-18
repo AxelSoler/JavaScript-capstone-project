@@ -9,9 +9,11 @@ logo.src = logoImg;
 const itemSection = document.querySelector('#listItems');
 
 itemSection.addEventListener('click', async (e) => {
-  const { id } = e.target.parentElement.children[1];
-  const details = await fetchCocktailById(id);
-  popup(details);
+  if (e.target.classList.contains('commentBtn')) {
+    const { id } = e.target.parentElement.children[1];
+    const details = await fetchCocktailById(id);
+    popup(details);
+  }
 });
 
 window.onload = () => {

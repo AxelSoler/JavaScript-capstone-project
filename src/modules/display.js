@@ -21,7 +21,7 @@ const displayItems = async (url, url2) => {
   </div>`;
   });
   const likesP = document.querySelectorAll('.likesNum');
-  const allLikes = await getData(url2);
+  const allLikes = await getData(`${url2}likes/`);
   likesP.forEach((element, index) => {
     element.innerText = `${allLikes[index].likes} likes`;
   });

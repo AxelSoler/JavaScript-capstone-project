@@ -97,7 +97,7 @@ const popup = async (details) => {
   const commentDiv = document.createElement('div');
   commentDiv.className = 'comment-div';
   const commentTitle = document.createElement('h2');
-  commentTitle.innerHTML = `Comment (${count})`;
+  commentTitle.innerHTML = `Comments (${count})`;
   commentTitle.className = 'comment-title';
 
   const ul = document.createElement('ul');

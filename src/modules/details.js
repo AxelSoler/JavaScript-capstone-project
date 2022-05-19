@@ -7,15 +7,31 @@ const fetchCocktailById = async (id) => {
 };
 
 const fetchComments = async (id) => {
-  const comments = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/${id}/comments`);
+  const comments = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/comments?item_id=${id}`);
   const result = await comments.json();
-  console.log(result);
+  return result;
 };
 
-const popup = (details) => {
+const postComments = async (id, username, comment) => {
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/comments', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: id,
+      username,
+      comment,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};
+
+const popup = async (details) => {
   const {
     strDrinkThumb, strDrink, strInstructions,
-    strIngredient1, strIngredient2, strIngredient3, strIngredient4,
+    strIngredient1, strIngredient2, strIngredient3, strIngredient4, idDrink,
   } = details;
   const card = document.createElement('div');
   card.className = 'card';
@@ -62,11 +78,20 @@ const popup = (details) => {
   commentTitle.innerHTML = 'Comment (2)';
   commentTitle.className = 'comment-title';
 
+  const allComments = await fetchComments(idDrink);
+  console.log(allComments);
   const ul = document.createElement('ul');
   ul.className = 'comment-list';
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < allComments.length; i += 1) {
     const li = document.createElement('li');
-    li.innerHTML = 'this is a comment displayed with for loop';
+    li.className = 'comment-list-div';
+    const p1 = document.createElement('p');
+    p1.innerHTML = `${allComments[i].username}:`;
+
+    const p2 = document.createElement('p');
+    p2.innerHTML = allComments[i].comment;
+
+    li.append(p1, p2);
     ul.append(li);
   }
 
@@ -94,9 +119,12 @@ const popup = (details) => {
   button.textContent = 'COMMENT';
   button.className = 'submit-button';
 
-  button.addEventListener('click', (e) => {
+  button.addEventListener('click', async (e) => {
     e.preventDefault();
-    console.log('hello world');
+    const username = nameInput.value;
+    const comment = message.value;
+    const id = Number(idDrink);
+    await postComments(id, username, comment);
   });
 
   commentDiv.append(commentTitle, ul);
@@ -112,4 +140,5 @@ export {
   fetchCocktailById,
   popup,
   fetchComments,
+  postComments,
 };

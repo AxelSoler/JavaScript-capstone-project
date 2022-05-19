@@ -1,19 +1,19 @@
-import { counterOfDrinks } from "../data.js";
+import { counterOfDrinks } from '../data.js';
 
 describe('count items', () => {
-  const items = [ 
+  const items = [
     {
-      "item_id": "item7",
-      "likes": 1061
+      item_id: 'item7',
+      likes: 1061,
     },
-  
+
     {
-      "item_id": "item8",
-      "likes": 1
+      item_id: 'item8',
+      likes: 1,
     },
     {
-      "item_id": "item9",
-      "likes": 31
+      item_id: 'item9',
+      likes: 31,
     },
   ];
 

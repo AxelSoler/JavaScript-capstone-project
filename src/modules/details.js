@@ -6,10 +6,49 @@ const fetchCocktailById = async (id) => {
   return result.drinks[0];
 };
 
-const popup = (details) => {
+const fetchComments = async (id) => {
+  const comments = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/comments?item_id=${id}`);
+  const result = await comments.json();
+  return result;
+};
+
+const reloadComments = (allComments, ul) => {
+  ul.className = 'comment-list';
+  for (let i = 0; i < allComments.length; i += 1) {
+    const li = document.createElement('li');
+    li.className = 'comment-list-div';
+    const p1 = document.createElement('p');
+    p1.innerHTML = `${allComments[i].username}:`;
+
+    const p2 = document.createElement('p');
+    p2.innerHTML = allComments[i].comment;
+
+    li.append(p1, p2);
+    ul.append(li);
+  }
+};
+
+const URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/comments';
+const postComments = async (id, username1, comment1) => {
+  const response = await fetch(URL, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: id,
+      username: username1,
+      comment: comment1,
+    }),
+  });
+  return response;
+};
+
+const popup = async (details) => {
   const {
     strDrinkThumb, strDrink, strInstructions,
-    strIngredient1, strIngredient2, strIngredient3, strIngredient4,
+    strIngredient1, strIngredient2, strIngredient3, strIngredient4, idDrink,
   } = details;
   const card = document.createElement('div');
   card.className = 'card';
@@ -53,16 +92,13 @@ const popup = (details) => {
   const commentDiv = document.createElement('div');
   commentDiv.className = 'comment-div';
   const commentTitle = document.createElement('h2');
-  commentTitle.innerHTML = 'Comment (2)';
+  commentTitle.innerHTML = 'Comment';
   commentTitle.className = 'comment-title';
 
+  const allComments = await fetchComments(idDrink);
+
   const ul = document.createElement('ul');
-  ul.className = 'comment-list';
-  for (let i = 0; i < 3; i += 1) {
-    const li = document.createElement('li');
-    li.innerHTML = 'this is a comment displayed with for loop';
-    ul.append(li);
-  }
+  reloadComments(allComments, ul);
 
   icon.addEventListener('click', () => {
     card.style.display = 'none';
@@ -84,9 +120,40 @@ const popup = (details) => {
   message.rows = 10;
   message.placeholder = 'Your insights....';
 
-  const button = document.createElement('form');
+  const button = document.createElement('button');
   button.textContent = 'COMMENT';
   button.className = 'submit-button';
+
+  button.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const username = nameInput.value;
+    const comment = message.value;
+
+    if (username === '' || comment === '') {
+      alert('fields cannot be empty');
+      return;
+    }
+
+    const id = Number(idDrink);
+
+    const showComments = async () => {
+      const res = await postComments(id, username, comment);
+
+      if (res) {
+        const ul = document.querySelector('.comment-list');
+        while (ul.firstChild) {
+          ul.removeChild(ul.firstChild);
+        }
+
+        const allComments = await fetchComments(idDrink);
+        reloadComments(allComments, ul);
+      }
+    };
+    showComments();
+
+    nameInput.value = '';
+    message.value = '';
+  });
 
   commentDiv.append(commentTitle, ul);
   infoDiv.append(info1, info2, info3, info4);
@@ -100,4 +167,6 @@ const popup = (details) => {
 export {
   fetchCocktailById,
   popup,
+  fetchComments,
+  postComments,
 };

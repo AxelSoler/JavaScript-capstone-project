@@ -1,7 +1,6 @@
 import like from '../img/like.svg';
 import { sendlike, getData, counterOfDrinks } from './data.js';
 
-
 const displayItems = async (url, url2) => {
   const itemSection = document.querySelector('#listItems');
   const margaritas = document.querySelector('#margaritas');

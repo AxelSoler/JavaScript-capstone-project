@@ -29,6 +29,6 @@ const counterOfDrinks = (data, text) => {
   const numberOfDrinks = data.length;
   text.innerText += ` (${numberOfDrinks})`;
   return numberOfDrinks;
-}
+};
 
 export { getData, sendlike, counterOfDrinks };

@@ -75,11 +75,11 @@ const popup = async (details) => {
   const commentDiv = document.createElement('div');
   commentDiv.className = 'comment-div';
   const commentTitle = document.createElement('h2');
-  commentTitle.innerHTML = 'Comment (2)';
+  commentTitle.innerHTML = 'Comment';
   commentTitle.className = 'comment-title';
 
   const allComments = await fetchComments(idDrink);
-  console.log(allComments);
+
   const ul = document.createElement('ul');
   ul.className = 'comment-list';
   for (let i = 0; i < allComments.length; i += 1) {

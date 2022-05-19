@@ -12,20 +12,37 @@ const fetchComments = async (id) => {
   return result;
 };
 
-const postComments = async (id, username, comment) => {
-  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/comments', {
+const reloadComments = (allComments, ul) => {
+  ul.className = 'comment-list';
+  for (let i = 0; i < allComments.length; i += 1) {
+    const li = document.createElement('li');
+    li.className = 'comment-list-div';
+    const p1 = document.createElement('p');
+    p1.innerHTML = `${allComments[i].username}:`;
+
+    const p2 = document.createElement('p');
+    p2.innerHTML = allComments[i].comment;
+
+    li.append(p1, p2);
+    ul.append(li);
+  }
+};
+
+const URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/xiWFQCtMNwoChVwdNjKe/comments';
+const postComments = async (id, username1, comment1) => {
+  const response = await fetch(URL, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json',
+      'Content-type': 'application/json; charset=UTF-8',
+      Accept: 'application/json',
     },
     body: JSON.stringify({
       item_id: id,
-      username,
-      comment,
+      username: username1,
+      comment: comment1,
     }),
   });
-  const result = await response.json();
-  return result;
+  return response;
 };
 
 const popup = async (details) => {
@@ -81,19 +98,7 @@ const popup = async (details) => {
   const allComments = await fetchComments(idDrink);
 
   const ul = document.createElement('ul');
-  ul.className = 'comment-list';
-  for (let i = 0; i < allComments.length; i += 1) {
-    const li = document.createElement('li');
-    li.className = 'comment-list-div';
-    const p1 = document.createElement('p');
-    p1.innerHTML = `${allComments[i].username}:`;
-
-    const p2 = document.createElement('p');
-    p2.innerHTML = allComments[i].comment;
-
-    li.append(p1, p2);
-    ul.append(li);
-  }
+  reloadComments(allComments, ul);
 
   icon.addEventListener('click', () => {
     card.style.display = 'none';
@@ -123,8 +128,27 @@ const popup = async (details) => {
     e.preventDefault();
     const username = nameInput.value;
     const comment = message.value;
+
+    if (username === '' || comment === '') {
+      alert('fields cannot be empty');
+      return;
+    }
+
     const id = Number(idDrink);
-    await postComments(id, username, comment);
+    const res = await postComments(id, username, comment);
+
+    if (res) {
+      const ul = document.querySelector('.comment-list');
+      while (ul.firstChild) {
+        ul.removeChild(ul.firstChild);
+      }
+
+      const allComments = await fetchComments(idDrink);
+      reloadComments(allComments, ul);
+    }
+
+    nameInput.value = '';
+    message.value = '';
   });
 
   commentDiv.append(commentTitle, ul);

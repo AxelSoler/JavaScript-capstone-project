@@ -172,4 +172,5 @@ export {
   popup,
   fetchComments,
   postComments,
+  commentCounter,
 };

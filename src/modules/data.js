@@ -4,4 +4,25 @@ const getData = async (url) => {
   return response;
 };
 
-export default getData;
+const sendlike = async (url2, img) => {
+  img.forEach((element, index) => {
+    element.addEventListener('click', async () => {
+      await fetch(url2, {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: `item${index + 1}`,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      const likesP = document.querySelectorAll('.likesNum');
+      const allLikes = await getData(url2);
+      likesP.forEach((element, index) => {
+        element.innerText = `${allLikes[index].likes} likes`;
+      });
+    });
+  });
+};
+
+export { getData, sendlike };

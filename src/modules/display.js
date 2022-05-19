@@ -1,5 +1,5 @@
-import getData from './data.js';
 import like from '../img/like.svg';
+import { sendlike, getData } from './data.js';
 
 const itemSection = document.querySelector('#listItems');
 
@@ -25,6 +25,8 @@ const displayItems = async (url, url2) => {
   likesP.forEach((element, index) => {
     element.innerText = `${allLikes[index].likes} likes`;
   });
+  const likesImg = document.querySelectorAll('.likeImg');
+  sendlike(`${url2}likes/`, likesImg);
 };
 
 export default displayItems;

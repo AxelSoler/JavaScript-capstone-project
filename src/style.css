@@ -67,6 +67,7 @@ a {
 
 .likeImg {
   width: 24px;
+  cursor: pointer;
 }
 
 .likes {

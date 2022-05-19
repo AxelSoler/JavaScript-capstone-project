@@ -27,7 +27,7 @@ const sendlike = async (url2, img) => {
 
 const counterOfDrinks = (data, text) => {
   const numberOfDrinks = data.length;
-  text.innerText += ` (${numberOfDrinks})`;
+  text.textContent += ` (${numberOfDrinks})`;
   return numberOfDrinks;
 };
 

@@ -135,17 +135,21 @@ const popup = async (details) => {
     }
 
     const id = Number(idDrink);
-    const res = await postComments(id, username, comment);
 
-    if (res) {
-      const ul = document.querySelector('.comment-list');
-      while (ul.firstChild) {
-        ul.removeChild(ul.firstChild);
-      }
-
-      const allComments = await fetchComments(idDrink);
-      reloadComments(allComments, ul);
-    }
+    const showComments = async () => {
+      const res = await postComments(id, username, comment);
+  
+      if (res) {
+        const ul = document.querySelector('.comment-list');
+        while (ul.firstChild) {
+          ul.removeChild(ul.firstChild);
+        }
+  
+        const allComments = await fetchComments(idDrink);
+        reloadComments(allComments, ul);
+      };
+    };
+    showComments();
 
     nameInput.value = '';
     message.value = '';

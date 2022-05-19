@@ -12,6 +12,8 @@ const fetchComments = async (id) => {
   return result;
 };
 
+const commentCounter = (comment) => comment.length;
+
 const reloadComments = (allComments, ul) => {
   ul.className = 'comment-list';
   for (let i = 0; i < allComments.length; i += 1) {
@@ -88,14 +90,15 @@ const popup = async (details) => {
   const instruction = document.createElement('p');
   instruction.className = 'instructions';
 
+  const allComments = await fetchComments(idDrink);
+  const count = commentCounter(allComments);
+
   instruction.innerHTML = strInstructions;
   const commentDiv = document.createElement('div');
   commentDiv.className = 'comment-div';
   const commentTitle = document.createElement('h2');
-  commentTitle.innerHTML = 'Comment';
+  commentTitle.innerHTML = `Comment (${count})`;
   commentTitle.className = 'comment-title';
-
-  const allComments = await fetchComments(idDrink);
 
   const ul = document.createElement('ul');
   reloadComments(allComments, ul);

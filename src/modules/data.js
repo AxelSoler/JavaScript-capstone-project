@@ -25,4 +25,10 @@ const sendlike = async (url2, img) => {
   });
 };
 
-export { getData, sendlike };
+const counterOfDrinks = (data, text) => {
+  const numberOfDrinks = data.length;
+  text.innerText += ` (${numberOfDrinks})`;
+  return numberOfDrinks;
+};
+
+export { getData, sendlike, counterOfDrinks };

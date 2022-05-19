@@ -1,9 +1,9 @@
 import like from '../img/like.svg';
-import { sendlike, getData } from './data.js';
-
-const itemSection = document.querySelector('#listItems');
+import { sendlike, getData, counterOfDrinks } from './data.js';
 
 const displayItems = async (url, url2) => {
+  const itemSection = document.querySelector('#listItems');
+  const margaritas = document.querySelector('#margaritas');
   const allItems = await getData(url);
   const allMargaritas = allItems.drinks;
   allMargaritas.forEach((element) => {
@@ -27,6 +27,7 @@ const displayItems = async (url, url2) => {
   });
   const likesImg = document.querySelectorAll('.likeImg');
   sendlike(`${url2}likes/`, likesImg);
+  counterOfDrinks(allLikes, margaritas);
 };
 
 export default displayItems;

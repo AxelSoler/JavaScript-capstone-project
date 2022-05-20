@@ -17,7 +17,7 @@ Almost all content is created dynamically with JavaScript. Teamwork in a full re
 
 ## Live Demo (link webpage when Pull Request aproved and merge it)
 
-[Live Demo Link]()
+[Live Demo Link](https://axelsoler.github.io/JavaScript-capstone-project/dist/)
 
 ## Getting Started
 

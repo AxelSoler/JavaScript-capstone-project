@@ -12,6 +12,7 @@ const itemSection = document.querySelector('#listItems');
 
 itemSection.addEventListener('click', async (e) => {
   if (e.target.classList.contains('commentBtn')) {
+    document.body.style.overflow = 'hidden';
     const { id } = e.target.parentElement.children[1];
     const details = await fetchCocktailById(id);
     await popup(details);

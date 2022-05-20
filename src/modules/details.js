@@ -105,6 +105,7 @@ const popup = async (details) => {
 
   icon.addEventListener('click', () => {
     card.style.display = 'none';
+    document.body.style.overflow = '';
   });
 
   const addCommentDiv = document.createElement('form');
